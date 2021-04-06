@@ -1,7 +1,8 @@
-import sys
+
 import pygame
 from settings import Settings
 from troll import Troll
+import game_functions as gf
 
 def run_game():
     pygame.init()
@@ -12,11 +13,7 @@ def run_game():
     troll = Troll(screen)
 
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-        screen.fill(game_settings.bg_color)
-        troll.blitme()
-        pygame.display.flip()
+        gf.check_events()
+        gf.update_screen(game_settings, screen, troll)
 
 run_game()
