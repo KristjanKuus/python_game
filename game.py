@@ -1,9 +1,11 @@
 import sys
 import pygame
+from settings import Settings
 
 def run_game():
     pygame.init()
-    screen = pygame.display.set_mode((800,600))
+    game_settings = Settings()
+    screen = pygame.display.set_mode((game_settings.screen_width,game_settings.screen_height))
     pygame.display.set_caption("Example Game")
     bg_color = (18, 5, 255)
 
@@ -11,7 +13,7 @@ def run_game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-        screen.fill(bg_color)
+        screen.fill(game_settings.bg_color)
         pygame.display.flip()
 
 run_game()
