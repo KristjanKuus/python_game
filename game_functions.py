@@ -5,12 +5,20 @@ def check_keydown_events(event, troll):
         troll.moving_right = True
     if event.key == pygame.K_LEFT:
         troll.moving_left = True
+    if event.key == pygame.K_DOWN:
+        troll.moving_down = True
+    if event.key == pygame.K_UP:
+        troll.moving_up = True
 
 def check_keyup_events(event, troll):
     if event.key == pygame.K_RIGHT:
         troll.moving_right = False
     if event.key == pygame.K_LEFT:
         troll.moving_left = False
+    if event.key == pygame.K_DOWN:
+        troll.moving_down = False
+    if event.key == pygame.K_UP:
+        troll.moving_up = False
 
 def check_events(troll):
     for event in pygame.event.get():
