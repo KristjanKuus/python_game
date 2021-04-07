@@ -14,9 +14,9 @@ class Troll():
         self.moving_left = False
 
     def update(self):
-        if self.moving_right:
+        if self.moving_right and self.rect.right < self.screen_rect.right:
             self.center += self.game_settings.troll_speed_factor
-        if self.moving_left:
+        if self.moving_left and self.rect.left > 0:
             self.center -= self.game_settings.troll_speed_factor
         self.rect.centerx = self.center
     def blitme(self):
