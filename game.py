@@ -13,7 +13,7 @@ def run_game():
     troll = Troll(screen)
 
     while True:
-        gf.check_events()
+        gf.check_events(troll)
         gf.update_screen(game_settings, screen, troll)
 
 run_game()
