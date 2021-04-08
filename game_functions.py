@@ -40,3 +40,9 @@ def update_screen(game_settings, screen, troll, bullets):
         bullet.draw_bullet()
     troll.blitme()
     pygame.display.flip()
+
+def update_bullets(bullets):
+    bullets.update()
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
