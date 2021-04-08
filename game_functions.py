@@ -11,8 +11,9 @@ def check_keydown_events(event, game_settings, screen, troll, bullets):
     if event.key == pygame.K_UP:
         troll.moving_up = True
     if event.key == pygame.K_SPACE:
-        new_bullet = Bullet(game_settings, screen,troll)
-        bullets.add(new_bullet)
+        if len(bullets) < game_settings.bullets_allowed:
+            new_bullet = Bullet(game_settings, screen,troll)
+            bullets.add(new_bullet)
 
 def check_keyup_events(event, troll):
     if event.key == pygame.K_RIGHT:
