@@ -3,7 +3,7 @@ from pygame.sprite import Sprite
 
 class Bullet(Sprite):
     def __init__(self, game_setting, screen, troll):
-        super.__init__()
+        super().__init__()
         self.screen = screen
         self.rect = pygame.Rect(0, 0, game_setting.bullet_width, game_setting.bullet_width)
         self.rect.centerx = troll.rect.centerx

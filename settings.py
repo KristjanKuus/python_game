@@ -7,6 +7,6 @@ class Settings:
         self.bg_color = (18, 5, 255)
         self.troll_speed_factor = 1.5
         self.bullet_speed_factor = 0.5
-        self.bullet_width = 3
-        self.bullet_height = 15
+        self.bullet_width = 20
+        self.bullet_height = 40
         self.bullet_color = 255, 255, 0
