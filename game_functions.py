@@ -60,13 +60,20 @@ def fire_bullet(game_settings, screen, troll, bullets):
         new_bullet = Bullet(game_settings, screen, troll)
         bullets.add(new_bullet)
 
-def create_fleet(game_settings, screen, megustas):
-    megusta = Megusta(game_settings, screen)
-    megusta_width = megusta.rect.width
+def get_number_megustas_x(game_settings, megusta_width):
     available_space_x = game_settings.screen_width - 2 * megusta_width
     number_megusta_x = int(available_space_x / (2 * megusta_width))
-    for megusta_number in range(number_megusta_x):
-        megusta = Megusta(game_settings, screen)
-        megusta.x = megusta_width + 2 * megusta_width * megusta_number
-        megusta.rect.x = megusta.x
-        megustas.add(megusta)
+    return number_megusta_x
+
+def create_megusta(game_settings, screen, megustas, megusta_number):
+    megusta = Megusta(game_settings, screen)
+    megusta_width = megusta.rect.width
+    megusta.x = megusta_width + 2 * megusta_width * megusta_number
+    megusta.rect.x = megusta.x
+    megustas.add(megusta)
+
+def create_fleet(game_settings, screen, megustas):
+    megusta = Megusta(game_settings, screen)
+    number_megustas_x = get_number_megustas_x(game_settings, megusta.rect.width)
+    for megusta_number in range(number_megustas_x):
+        create_megusta(game_settings, screen, megustas, megusta_number)
