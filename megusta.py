@@ -1,10 +1,10 @@
 import pygame
 from pygame.sprite import Sprite
 
-class Alien(Sprite):
+class Megusta(Sprite):
     def __init__(self, game_settings, screen):
         super().__init__()
-        self.game = screen
+        self.screen = screen
         self.game_settings = game_settings
         self.image = pygame.image.load("images/megusta.bmp")
         self.rect = self.image.get_rect()
