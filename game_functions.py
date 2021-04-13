@@ -65,15 +65,23 @@ def get_number_megustas_x(game_settings, megusta_width):
     number_megusta_x = int(available_space_x / (2 * megusta_width))
     return number_megusta_x
 
-def create_megusta(game_settings, screen, megustas, megusta_number):
+def get_number_rows(game_settings, troll_height, megusta_height):
+    available_space_y = game_settings.screen_height - 3 * megusta_height - troll_height
+    number_rows = int(available_space_y / (2 *  megusta_height))
+    return number_rows
+
+def create_megusta(game_settings, screen, megustas, megusta_number, row_number):
     megusta = Megusta(game_settings, screen)
     megusta_width = megusta.rect.width
     megusta.x = megusta_width + 2 * megusta_width * megusta_number
     megusta.rect.x = megusta.x
+    megusta.rect.y = megusta.rect.height + 2 * megusta.rect.height * row_number
     megustas.add(megusta)
 
-def create_fleet(game_settings, screen, megustas):
+def create_fleet(game_settings, screen, troll, megustas):
     megusta = Megusta(game_settings, screen)
     number_megustas_x = get_number_megustas_x(game_settings, megusta.rect.width)
-    for megusta_number in range(number_megustas_x):
-        create_megusta(game_settings, screen, megustas, megusta_number)
+    number_rows = get_number_rows(game_settings, troll.rect.height, megusta.rect.height)
+    for row_number in range(number_rows):
+        for megusta_number in range(number_megustas_x):
+            create_megusta(game_settings, screen, megustas, megusta_number, row_number)

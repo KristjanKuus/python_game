@@ -15,7 +15,7 @@ def run_game():
     troll = Troll(game_settings, screen)
     bullets = Group()
     megustas = Group()
-    gf.create_fleet(game_settings, screen, megustas)
+    gf.create_fleet(game_settings, screen, troll, megustas)
     while True:
         gf.check_events(game_settings, screen, troll, bullets)
         troll.update()
