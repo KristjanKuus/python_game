@@ -1,7 +1,7 @@
 import sys
 import pygame
 from bullet import Bullet
-
+from megusta import Megusta
 
 def check_keydown_events(event, game_settings, screen, troll, bullets):
     if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
@@ -39,12 +39,12 @@ def check_events(game_settings, screen, troll, bullets):
             check_keyup_events(event, troll)
 
 
-def update_screen(game_settings, screen, troll, megusta, bullets):
+def update_screen(game_settings, screen, troll, megustas, bullets):
     screen.fill(game_settings.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     troll.blitme()
-    megusta.blitme()
+    megustas.draw(screen)
     pygame.display.flip()
 
 
@@ -59,3 +59,14 @@ def fire_bullet(game_settings, screen, troll, bullets):
     if len(bullets) < game_settings.bullets_allowed:
         new_bullet = Bullet(game_settings, screen, troll)
         bullets.add(new_bullet)
+
+def create_fleet(game_settings, screen, megustas):
+    megusta = Megusta(game_settings, screen)
+    megusta_width = megusta.rect.width
+    available_space_x = game_settings.screen_width - 2 * megusta_width
+    number_megusta_x = int(available_space_x / (2 * megusta_width))
+    for megusta_number in range(number_megusta_x):
+        megusta = Megusta(game_settings, screen)
+        megusta.x = megusta_width + 2 * megusta_width * megusta_number
+        megusta.rect.x = megusta.x
+        megustas.add(megusta)
