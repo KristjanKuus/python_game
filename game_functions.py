@@ -2,26 +2,28 @@ import sys
 import pygame
 from bullet import Bullet
 def check_keydown_events(event, game_settings, screen, troll, bullets):
-    if event.key == pygame.K_RIGHT:
+    if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
         troll.moving_right = True
-    if event.key == pygame.K_LEFT:
+    if event.key == pygame.K_LEFT or event.key == pygame.K_a:
         troll.moving_left = True
-    if event.key == pygame.K_DOWN:
+    if event.key == pygame.K_DOWN or event.key == pygame.K_s:
         troll.moving_down = True
-    if event.key == pygame.K_UP:
+    if event.key == pygame.K_UP or event.key == pygame.K_w:
         troll.moving_up = True
     if event.key == pygame.K_SPACE:
         fire_bullet(game_settings, screen, troll, bullets)
+    if event.key == pygame.K_q:
+        sys.exit()
 
 
 def check_keyup_events(event, troll):
-    if event.key == pygame.K_RIGHT:
+    if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
         troll.moving_right = False
-    if event.key == pygame.K_LEFT:
+    if event.key == pygame.K_LEFT  or event.key == pygame.K_a:
         troll.moving_left = False
-    if event.key == pygame.K_DOWN:
+    if event.key == pygame.K_DOWN or event.key == pygame.K_s:
         troll.moving_down = False
-    if event.key == pygame.K_UP:
+    if event.key == pygame.K_UP or event.key == pygame.K_w:
         troll.moving_up = False
 
 def check_events(game_settings, screen, troll, bullets):
