@@ -85,3 +85,6 @@ def create_fleet(game_settings, screen, troll, megustas):
     for row_number in range(number_rows):
         for megusta_number in range(number_megustas_x):
             create_megusta(game_settings, screen, megustas, megusta_number, row_number)
+
+def update_megustas(megustas):
+    megustas.update()

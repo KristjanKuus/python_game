@@ -13,3 +13,6 @@ class Megusta(Sprite):
         self.x = float(self.rect.x)
     def blitme(self):
         self.screen.blit(self.image, self.rect)
+    def update(self):
+        self.x += self.game_settings.megusta_speed_factor
+        self.rect.x = self.x

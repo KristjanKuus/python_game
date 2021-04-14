@@ -11,3 +11,4 @@ class Settings:
         self.bullet_height = 50
         self.bullet_color = 255, 255, 0
         self.bullets_allowed = 3
+        self.megusta_speed_factor = 0.5
