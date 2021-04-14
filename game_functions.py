@@ -86,5 +86,16 @@ def create_fleet(game_settings, screen, troll, megustas):
         for megusta_number in range(number_megustas_x):
             create_megusta(game_settings, screen, megustas, megusta_number, row_number)
 
-def update_megustas(megustas):
+def check_fleet_edges(game_settings, megustas):
+    for megusta in megustas.sprites():
+        if megusta.check_edges():
+            change_fleet_direction(game_settings, megustas)
+            break
+def change_fleet_direction(game_settings, megustas):
+    for megusta in megustas.sprites():
+        megusta.rect.y += game_settings.fleet_drop_speed
+    game_settings.fleet_direction *= -1
+
+def update_megustas(game_settings, megustas):
+    check_fleet_edges(game_settings, megustas)
     megustas.update()
