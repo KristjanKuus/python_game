@@ -6,7 +6,7 @@ class Megusta(Sprite):
         super().__init__()
         self.screen = screen
         self.game_settings = game_settings
-        self.image = pygame.image.load("images/megusta.bmp")
+        self.image = pygame.image.load("images/megusta1.bmp")
         self.rect = self.image.get_rect()
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
