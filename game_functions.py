@@ -102,6 +102,10 @@ def change_fleet_direction(game_settings, megustas):
         megusta.rect.y += game_settings.fleet_drop_speed
     game_settings.fleet_direction *= -1
 
-def update_megustas(game_settings, megustas):
+def update_megustas(game_settings, troll, megustas):
     check_fleet_edges(game_settings, megustas)
     megustas.update()
+    # Check collision between megustas and troll
+    if pygame.sprite.spritecollideany(troll, megustas):
+        print("ship rekt")
+        sys.exit()

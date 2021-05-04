@@ -20,7 +20,7 @@ def run_game():
         gf.check_events(game_settings, screen, troll, bullets)
         troll.update()
         gf.update_bullets(megustas, bullets, game_settings, screen, troll)
-        gf.update_megustas(game_settings, megustas)
+        gf.update_megustas(game_settings, troll, megustas)
         gf.update_screen(game_settings, screen, troll, megustas, bullets)
 
 run_game()
