@@ -48,12 +48,16 @@ def update_screen(game_settings, screen, troll, megustas, bullets):
     pygame.display.flip()
 
 
-def update_bullets(megustas, bullets):
+def update_bullets(megustas, bullets, game_settings, screen, troll):
     bullets.update()
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     collisions = pygame.sprite.groupcollide(bullets, megustas, True, True)
+
+    if len(megustas) == 0:
+        bullets.empty()
+        create_fleet(game_settings, screen, troll, megustas)
 
 def fire_bullet(game_settings, screen, troll, bullets):
     if len(bullets) < game_settings.bullets_allowed:
