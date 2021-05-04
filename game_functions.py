@@ -2,6 +2,17 @@ import sys
 import pygame
 from bullet import Bullet
 from megusta import Megusta
+from game_stats import GameStats
+from time import sleep
+
+class Background(pygame.sprite.Sprite):
+    def __init__(self, image_file, location):
+        pygame.sprite.Sprite.__init__(self)  #call Sprite initializer
+        self.image = pygame.image.load(image_file)
+        self.rect = self.image.get_rect()
+        self.rect.left, self.rect.top = location
+
+BackGround = Background('images/rai.bmp', [0,0])
 
 def check_keydown_events(event, game_settings, screen, troll, bullets):
     if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
@@ -41,6 +52,7 @@ def check_events(game_settings, screen, troll, bullets):
 
 def update_screen(game_settings, screen, troll, megustas, bullets):
     screen.fill(game_settings.bg_color)
+    screen.blit(BackGround.image, BackGround.rect)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     troll.blitme()
@@ -102,10 +114,16 @@ def change_fleet_direction(game_settings, megustas):
         megusta.rect.y += game_settings.fleet_drop_speed
     game_settings.fleet_direction *= -1
 
-def update_megustas(game_settings, troll, megustas):
+def update_megustas(game_settings, stats, screen, troll, megustas, bullets):
     check_fleet_edges(game_settings, megustas)
     megustas.update()
     # Check collision between megustas and troll
     if pygame.sprite.spritecollideany(troll, megustas):
-        print("ship rekt")
-        sys.exit()
+        troll_hit(game_settings, stats, screen, troll, megustas, bullets)
+
+def troll_hit(game_settings, stats, screen, troll, megustas, bullets):
+    stats.ship_left = stats.ships_left -1
+    megustas.empty()
+    bullets.empty()
+    create_fleet(game_settings, screen, troll, megustas)
+    troll.ship_center()

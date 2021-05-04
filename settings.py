@@ -5,6 +5,8 @@ class Settings:
         self.screen_width = 1920
         self.screen_height = 1100
         self.bg_color = (18, 5, 255)
+        self.bg_image = "images/meme.bmp"
+        self.troll_limit = 3
         self.troll_speed_factor = 1.5
         self.bullet_speed_factor = 1.5
         self.bullet_width = 5
