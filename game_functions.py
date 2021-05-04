@@ -131,5 +131,6 @@ def troll_hit(game_settings, stats, screen, troll, megustas, bullets):
 
 def check_megustas_bottom(game_settings, stats, screen, troll, megustas, bullets):
     screen_rect = game_settings.screen_height
-    if megustas.rect.y > screen_rect:
-        sys.exit()
+    for megustas in megustas.sprites():
+        if megustas.rect.bottom >= screen_rect:
+            sys.exit()
