@@ -14,5 +14,5 @@ class Settings:
         self.bullet_color = 255, 255, 0
         self.bullets_allowed = 10
         self.megusta_speed_factor = 3
-        self.fleet_drop_speed = 25
+        self.fleet_drop_speed = 30
         self.fleet_direction = 1
