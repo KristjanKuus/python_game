@@ -118,6 +118,7 @@ def update_megustas(game_settings, stats, screen, troll, megustas, bullets):
     check_fleet_edges(game_settings, megustas)
     megustas.update()
     # Check collision between megustas and troll
+    check_megustas_bottom(game_settings, stats, screen, troll, megustas, bullets)
     if pygame.sprite.spritecollideany(troll, megustas):
         troll_hit(game_settings, stats, screen, troll, megustas, bullets)
 
@@ -127,3 +128,8 @@ def troll_hit(game_settings, stats, screen, troll, megustas, bullets):
     bullets.empty()
     create_fleet(game_settings, screen, troll, megustas)
     troll.ship_center()
+
+def check_megustas_bottom(game_settings, stats, screen, troll, megustas, bullets):
+    screen_rect = game_settings.screen_height
+    if megustas.rect.y > screen_rect:
+        sys.exit()
