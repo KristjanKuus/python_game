@@ -53,8 +53,10 @@ def update_bullets(megustas, bullets, game_settings, screen, troll):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    collisions = pygame.sprite.groupcollide(bullets, megustas, True, True)
+        check_alien_collisons(megustas, bullets, game_settings, screen, troll)
 
+def check_alien_collisons(megustas, bullets, game_settings, screen, troll):
+    collisions = pygame.sprite.groupcollide(bullets, megustas, True, True)
     if len(megustas) == 0:
         bullets.empty()
         create_fleet(game_settings, screen, troll, megustas)
