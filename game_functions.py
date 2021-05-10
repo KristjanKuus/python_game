@@ -55,6 +55,7 @@ def check_events(game_settings, screen, troll, bullets, stats, play_button):
 def check_play_button(stats, play_button, mouse_x, mouse_y):
     if play_button.rect.collidepoint(mouse_x, mouse_y):
         stats.game_active = True
+        pygame.mouse.set_visible(True)
 
 def update_screen(game_settings, screen, troll, megustas, bullets, play_button, stats):
     screen.fill(game_settings.bg_color)
