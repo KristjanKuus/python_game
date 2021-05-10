@@ -12,9 +12,9 @@ class Settings:
         self.fleet_drop_speed = 30
         self.fleet_direction = 1
         self.speedup_scale= 2
-        self.init_dynamic_settinngs()
+        self.init_dynamic_settings()
 
-    def init_dynamic_settinngs(self):
+    def init_dynamic_settings(self):
         self.troll_speed_factor = 1.5
         self.bullet_speed_factor = 1.5
         self.megusta_speed_factor = 2

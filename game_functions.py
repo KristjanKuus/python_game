@@ -50,10 +50,13 @@ def check_events(game_settings, screen, troll, bullets, stats, play_button):
             check_keyup_events(event, troll)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_button(stats, play_button, mouse_x, mouse_y)
+            check_play_button(game_settings, stats, play_button, mouse_x, mouse_y)
 
-def check_play_button(stats, play_button, mouse_x, mouse_y):
-    if play_button.rect.collidepoint(mouse_x, mouse_y):
+def check_play_button(game_settings, stats, play_button, mouse_x, mouse_y):
+    buttton_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
+    if buttton_clicked and not stats.game_active:
+        stats.reset_stats()
+        game_settings.init_dynamic_settings()
         stats.game_active = True
         pygame.mouse.set_visible(True)
 
