@@ -80,6 +80,7 @@ def check_alien_collisons(megustas, bullets, game_settings, screen, troll):
     collisions = pygame.sprite.groupcollide(bullets, megustas, True, True)
     if len(megustas) == 0:
         bullets.empty()
+        game_settings.increase_speed()
         create_fleet(game_settings, screen, troll, megustas)
 
 def fire_bullet(game_settings, screen, troll, bullets):
