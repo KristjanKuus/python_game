@@ -40,7 +40,7 @@ def check_keyup_events(event, troll):
         troll.moving_up = False
 
 
-def check_events(game_settings, screen, troll, bullets):
+def check_events(game_settings, screen, troll, bullets, stats, play_button):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -48,15 +48,23 @@ def check_events(game_settings, screen, troll, bullets):
             check_keydown_events(event, game_settings, screen, troll, bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, troll)
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            check_play_button(stats, play_button, mouse_x, mouse_y)
 
+def check_play_button(stats, play_button, mouse_x, mouse_y):
+    if play_button.rect.collidepoint(mouse_x, mouse_y):
+        stats.game_active = True
 
-def update_screen(game_settings, screen, troll, megustas, bullets):
+def update_screen(game_settings, screen, troll, megustas, bullets, play_button, stats):
     screen.fill(game_settings.bg_color)
     screen.blit(BackGround.image, BackGround.rect)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     troll.blitme()
     megustas.draw(screen)
+    if stats.game_active == False:
+        play_button.draw_button()
     pygame.display.flip()
 
 
@@ -133,4 +141,4 @@ def check_megustas_bottom(game_settings, stats, screen, troll, megustas, bullets
     screen_rect = game_settings.screen_height
     for megustas in megustas.sprites():
         if megustas.rect.bottom >= screen_rect:
-            sys.exit()
+           print("ai")
