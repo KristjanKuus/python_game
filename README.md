@@ -22,6 +22,3 @@ To run the game, simply execute game.py. I played and coded it in pycharm, so th
 
 ### FINDING BUGS
 If you find problems with my code and game you can contact me on kristjan.kuus.001@khk.ee
-
-### LICENSE
-Licensed under WTFPL license.
